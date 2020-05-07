@@ -1,0 +1,26 @@
+# include<iostream>
+# include<bits/stdc++.h>
+using namespace std;
+
+int lis(int arr[], int n)
+{
+    int lis[n];
+    lis[0]=arr[0];
+    for(int i=1; i<n; i++)
+    {
+        lis[i]=1;
+        for(int j=0;j<i;j++)
+        {   
+            if(arr[j]<arr[i])
+                lis[i]=max(lis[i],lis[j]+arr[i]);
+        }
+    }
+    return *max_element(lis,lis+n);
+}
+int main() 
+{ 
+    int arr[] = { 10, 22, 9, 33, 21, 50, 41, 60 }; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    cout << lis(arr,n);
+    return 0; 
+} 
