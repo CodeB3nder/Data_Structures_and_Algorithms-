@@ -1,4 +1,4 @@
-# include "creation_of_tree.cpp"
+// # include "creation_of_tree.cpp"
 
 int height(node * root)
 {
@@ -9,7 +9,7 @@ int height(node * root)
     
 }
 
-int main(){
-    node* root = create();
-    cout << height(root);
-}
+// int main(){
+//     node* root = create();
+//     cout << height(root);
+// }
