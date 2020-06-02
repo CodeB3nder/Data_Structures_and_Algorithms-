@@ -1,3 +1,4 @@
+// Queries on a subarray: finding sum in a range
 # include<iostream>
 using namespace std;
 
