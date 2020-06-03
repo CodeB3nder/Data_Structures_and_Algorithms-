@@ -33,6 +33,8 @@ void leftRotatebyD_naive(int arr[], int n, int d)
 
 void leftRotatebyD_reverse(int arr[], int n, int d)
 {
+    if(d==0)
+        return ;
     reverse(arr,0,d-1);
     reverse(arr,d,n-1);
     reverse(arr,0,n-1);
