@@ -6,8 +6,12 @@ int findSubArraySum(int arr[], int n, int sum){
     unordered_map<int, int> prevSum;
     int count = 0;
     int currSum = 0;
+    int sum = 0;
+
 
     for(int i=0; i<n ; i++){
+        if(arr[i]==0)
+            arr[i] = -1;
         currSum += arr[i];
         if(currSum == sum)
             count++;
@@ -18,6 +22,7 @@ int findSubArraySum(int arr[], int n, int sum){
     }
     return count;
 }
+
 int main(){
-    
+
 }
