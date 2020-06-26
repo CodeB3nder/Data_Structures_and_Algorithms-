@@ -6,37 +6,20 @@ void add_edge(vector<int> adj[], int src, int dest)
     adj[src].push_back(dest); 
     adj[dest].push_back(src); 
 } 
-bool DFSrec(vector<int> adj[], int source, bool visited[],int parent)
+bool DFSrec(vector<int> adj[], int source, bool visited[], int parent)
 {
-    visited[source]=true;
-    //cout << source << " ";
-
-    for(int v : adj[source])
-    {
-        cout << "outside" << "source:"<<source <<  " "<< "v:" << v << " " << "parent:"<< parent << " " ;
-        if(visited[v]==false)
-        {
-            if (DFSrec(adj,v,visited,source)==true)
-            {      
-        cout << "if"<<"source:"<<source <<  " "<< "v:" << v << " " << "parent:"<< parent << " " ;
-                //cout << source << " " << v << " " ;
-                //cout << "true ";
+    visited[source] = true;
+    for(int v : adj[source]){
+        if(visited[v] == false){
+            if(DFSrec(adj, v, visited, source) == true)
                 return true;
-            }
-            else if(v!=parent)
-            {   
-        cout <<"else:"<< "source:"<<source <<  " "<< "v:" << v << " " << "parent:"<< parent << " " ;
-                cout << "else:";
-                //cout << "false ";
-                return true;
-
         }
-        }
-    }
-        cout << "false ";
-        return false;
+        else if(v!=parent)
+            return true;
+    }   
+    return false;
 }
-bool DFS(vector<int> adj[], int V,int source)
+bool DFS(vector<int> adj[], int V)
 {
     bool visited[V];
     for(int i=0; i<V; i++)
@@ -44,11 +27,9 @@ bool DFS(vector<int> adj[], int V,int source)
     for(int i=0; i<V; i++)
     {
         if(visited[i]==false)
-{
-               //cout << "true ";
-                return DFSrec(adj,i,visited,-1);
-}
-        return false;
+            if(DFSrec(adj, i, visited, -1) == true)
+                return true;
+       
     }
 }
 int main() 
@@ -71,5 +52,37 @@ int main()
     add_edge(adj, 1, 3); 
     add_edge(adj, 4, 5); 
 
-    cout << DFS(adj, v, 0);
+    cout << DFS(adj, v);
 }
+/*
+
+bool isCyclicUtil(vector<int> g[],bool* visited,int sv,int parent){
+    visited[sv]=true;
+    for(int i=0;i<g[sv].size();i++){
+        if(visited[g[sv][i]]==false){
+            if(isCyclicUtil(g,visited,g[sv][i],sv))
+                return true;
+        }
+        else if(parent!=g[sv][i]){
+            return true;
+        }
+    }
+    return false;
+}
+bool isCyclic(vector<int> g[], int V)
+{
+    // Your code here
+    bool* visited=new bool [V];
+    for(int i=0;i<V;i++){
+        visited[i]=false;
+    }
+    for(int i=0;i<V;i++){
+        if(visited[i]==false){
+            if(isCyclicUtil(g,visited,i,-1))
+                return true;
+        }
+    }
+    return false;
+}
+
+*/
