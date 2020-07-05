@@ -11,23 +11,28 @@ int subset_sum_rec(int arr[], int n, int sum){
 //  dp(i,j) Is it possible to form a Subset with i elements that is arr[0..i] and target sum j  
 int subset_sum_exists_dp(int arr[], int n, int sum)
 {
-    bool dp[n+1][sum+1];
-    for(int i=0; i<=n; i++){
-        for(int j=0; j<=sum;j++){
-            if(i==0)
-                dp[i][j]=false;
-            if(j==0)
-                dp[i][j]=true;
-            if(j < arr[i-1])
-                dp[i][j] = dp[i-1][j];
-            else
-                dp[i][j] = dp[i-1][j] || dp[i-1][j-arr[i-1]];
-             
-        }
+    bool dp[n+1][sum+1]; 
+    for (int i = 0; i <= n; i++) 
+        dp[i][0] = true; 
+
+    for (int i = 1; i <= sum; i++) 
+        dp[0][i] = false; 
+
+    for (int i=1; i<=n; i++) 
+    { 
+        for (int j=1; j<=sum; j++) 
+        { 
+            dp[i][j] = dp[i-1][j]; 
+            if (arr[i-1] <= j) 
+                dp[i][j] |= dp[i-1][j-arr[i-1]]; 
+        } 
     }
     return dp[n][sum];
 
 }
+
+//dp(i,j) is the number of subsets with sum j and arr[0...i]
+
 int subset_count(int arr[], int n, int sum)
 {   
     int dp[n+1][sum+1];
