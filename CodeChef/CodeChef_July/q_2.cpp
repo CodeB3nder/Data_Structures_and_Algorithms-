@@ -23,9 +23,46 @@ typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 const int mod = 1'000'000'007;
 
+ll power(ll n){
+    ll sum=0;
+    while(n!=0){
+        sum += n%10;
+        n /= 10;
+    }
+    return sum;
+}
 void solve()
 {
-  
+    ll n; cin >> n;
+    ll a[n],b[n];
+    fo(i,n)
+        cin >> a[i] >> b[i];
+    ll chef = 0;
+    ll morty = 0;
+    fo(i,n){
+        if(power(a[i]) > power(b[i]))
+            chef++;
+        else if(power(a[i]) < power(b[i]))
+            morty++;
+        else
+        {
+            chef++;
+            morty++;
+        }
+    }
+    if(chef > morty){
+        cout << 0 << " " << chef << endl;
+    }
+    else if(chef < morty){
+        cout << 1 << " " << morty << endl;
+    }
+    else
+    {
+        cout << 2 << " " <<  morty << endl;
+    }
+    
+    
+    
 }
 
 int main()

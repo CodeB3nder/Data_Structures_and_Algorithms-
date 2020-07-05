@@ -25,7 +25,15 @@ const int mod = 1'000'000'007;
 
 void solve()
 {
-  
+    ll n; cin >> n;
+    ll arr[n];
+    fo(i,n)
+        cin >> arr[i];
+    ll total = 0;
+    for (int i=1;i<n;i++){
+        total += abs(arr[i]-arr[i-1])-1;
+    }
+    cout << total << endl;
 }
 
 int main()

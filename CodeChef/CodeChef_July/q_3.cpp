@@ -25,7 +25,25 @@ const int mod = 1'000'000'007;
 
 void solve()
 {
-  
+    int k; cin >> k;
+    fo(i,8){
+        fo(j,8){
+            if(i==0 && j==0){
+                cout << "O";
+                continue;
+            }
+            if(k!=1){
+                cout << ".";
+                k--;
+            }
+            else
+            {
+                cout << "X";
+            }
+            
+        }
+        cout << endl;
+    }
 }
 
 int main()
