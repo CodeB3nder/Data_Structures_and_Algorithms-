@@ -1,63 +1,63 @@
-#include <bits/stdc++.h>
-#include<algorithm>
-#include<unordered_map>
+ #include <bits/stdc++.h>
 using namespace std;
-#define fo(i, n) for (int i = 0; i < n; i++)
-#define ll long long
-#define pb push_back
-#define mp make_pair
-#define F first
-#define S second
-#define all(x) x.begin(), x.end()
-#define clr(x) memset(x, 0, sizeof(x))
-#define sortall(x) sort(all(x))
-#define tr(it, a) for (auto it = a.begin(); it != a.end(); it++)
-#define PI 3.1415926535897932384626
-typedef unordered_map<int, int> um;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pl;
-typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef vector<pii> vpii;
-typedef vector<pl> vpl;
-typedef vector<vi> vvi;
-typedef vector<vl> vvl;
-const int mod = 1'000'000'007;
-
-void solve()
-{
-    ll n,x,a; cin >> n >> x;
-    int arr[n];
-    fo(i,n)
-        cin >> arr[i];
-    sort(arr, arr+n, greater<int> ());
-    //equal
-    ll dum = arr[0];
-    ll count = 0;
-    while(dum>0){
-        cout << dum << " " << x << endl;
-        a = dum;
-        dum -= x;
-        
-        count++;
-        if(dum >= arr[0]/2)
-            dum = arr[0];
-        else if(dum < arr[0]/2 && dum > 0)
-            dum = 2*(a-x);
-        x *= 2;
-    }
-    count += n-1;
-    cout << count << endl;
-}
-
-int main()
-{
-  ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-  int t = 1;
-  cin >> t;
-  while (t--)
+#define ll long long int
+int main() {
+  ll t;
+  cin>>t;
+  while(t--)
   {
-    solve();
+  	ll n,x;
+  	cin>>n>>x;
+  	vector<ll>a(n);
+  	for(int i=0;i<n;i++)
+  	cin>>a[i];
+  	sort(a.begin(),a.end());
+  	ll l=lower_bound(a.begin(),a.end(),x)-a.begin();
+  	ll ct=0;
+  	 ll ct1=INT_MAX;
+    //cout<<l<<"\n";
+   
+  	for(int i=l;i<n;i++)
+  	{
+  		if(x<a[i])
+  		{
+  			while(x<a[i])
+  			{
+  				x=2*x;
+  				ct++;
+  			}
+  			ct++;
+  		}
+  		else
+  		ct++;
+  		x=2*a[i];
+  	}
+  	ll p=l+ct;
+  	if(l!=0)
+  	{ ct=0;
+  	      l--;
+  	      for(int i=l;i<n;i++)
+  	{
+  		if(x<a[i])
+  		{
+  			while(x<a[i])
+  			{	
+				cout << x << " " << a[i] << endl;
+  				x=2*x;
+  				ct++;
+  			}
+  			ct++;
+  		}
+  		else
+  		ct++;
+  		x=2*a[i];
+  	}
+  	cout<<min(ct+l,p)<<"\n";
+  	      
+  	}
+  	else
+  	cout<<p<<"\n";
+ 
+  	
   }
-  return 0;
 }
