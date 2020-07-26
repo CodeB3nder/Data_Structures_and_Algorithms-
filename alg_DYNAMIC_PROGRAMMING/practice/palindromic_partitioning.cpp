@@ -2,7 +2,7 @@
 # include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-int dp[100+1][1000+1];
+int dp[1000+1][1000+1];
 bool isPalindrome(string str, int i, int j) 
 { 
     int l = i; 
@@ -72,7 +72,7 @@ int main(){
         string s; cin >> s;
         
         memset(dp, -1, sizeof(dp));
-        cout<<pal(s, 0, s.length()-1)<<"\n";
+        cout<<pal_memorized(s, 0, s.length()-1)<<"\n";
         //cout << 12 << endl;
 
     }
