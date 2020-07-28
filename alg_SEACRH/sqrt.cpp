@@ -6,6 +6,7 @@ int sqrtFloor(int x){
     int high = x; 
     int ans = -1;
     while(low<=high){
+        // ki
         int mid = (low + high)/2;
         int mSq = mid*mid;
         if(mSq == x)
