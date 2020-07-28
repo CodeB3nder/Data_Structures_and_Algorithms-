@@ -39,6 +39,6 @@ int main()
 		cin >> arr[i];
 	int x;
 	cin >> x;
-	cout << binary_search(arr, 0, n, x);
+	cout << binary_Search_iter(arr, n, x);
 	return 0;
 }
