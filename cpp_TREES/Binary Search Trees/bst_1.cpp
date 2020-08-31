@@ -1,4 +1,4 @@
-# include <istream>
+# include <iostream>
 using namespace std;
 
 struct Node{
@@ -36,5 +36,20 @@ bool search_iter(Node* root, int x){
 Node * insert_rec(Node* root, int x){
     if(root==NULL)
         return new Node(x);
+    if(x < root->key)
+        root->left = insert_rec(root->left, x);
+    if(x > root->key)
+        root->right = insert_rec(root->right, x);
+    
+    return root;
+
+}
+Node *delete_rec(Node* root, int key){
+    if(root == NULL) return root;
+
+    if(key < root->key) root->left = delete_rec(root->left, key);
+
+    else if(key > root->key) root->right = delete_rec(root->right, key);
+
 
 }

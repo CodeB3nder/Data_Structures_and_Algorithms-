@@ -66,7 +66,7 @@ int last_occurence_rec(int arr[], int l, int h, int x)
 	else if(arr[mid] < x)
 		return last_occurence_rec(arr, mid+1, h, x);
     else{
-        if(mid==0 || arr[mid+1]!=arr[mid])
+        if(mid!=n-1 || arr[mid+1]!=arr[mid])
             return mid;
         else
             return last_occurence_rec(arr,mid+1,h, x);

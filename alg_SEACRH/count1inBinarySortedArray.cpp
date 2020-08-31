@@ -15,7 +15,7 @@ int main()
  
         int l = lower_bound(a.begin(), a.end(), x)-a.begin();
        
-        cout <<n-l << endl;
+        cout << n-l << endl;
     //     int ans = h - l;
     //     if(ans)
     //         cout << ans << "\n";
