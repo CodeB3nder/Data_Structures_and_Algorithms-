@@ -14,7 +14,7 @@ struct Node{
 Node* floor_bst(Node* root, int x){
     Node* res = NULL; 
     while(root!=NULL){
-        if(root->key = x)
+        if(root->key == x)
             return root;
         else if(root->key > x)
             root = root->left;
@@ -24,4 +24,18 @@ Node* floor_bst(Node* root, int x){
         }
     }
     return res;
+}
+Node* ceil_bst(Node* root, int x){
+     Node* res = NULL;
+     while(root!=NULL){
+        if(root->key == x)
+            return root;
+        else if(root->key < x)
+            root = root->right;
+        else {
+            res = root;
+            root = root->left;
+        }
+
+     }
 }
